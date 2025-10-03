@@ -3,23 +3,26 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 export default function FortuneCard() {
-  const [birthday, setBirthday] = useState('');
+  const [birthDate, setBirthDate] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [fortune, setFortune] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const todayKey = (birthday: string, bloodType: string) => {
+  const todayKey = (birthDate: string, bloodType: string) => {
     const t = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-    return `fortune:${birthday}:${bloodType}:${t}`;
+    return `fortune:${birthDate}:${bloodType}:${t}`;
   };
 
   const handleSubmit = async () => {
     setError(null);
-    if (!birthday) return setError('生年月日を選んでください。');
+
+    console.log("Sending:", { birthDate, bloodType }); // 確認
+    
+    if (!birthDate) return setError('生年月日を選んでください。');
     if (!bloodType) return setError('血液型を選んでください。');
 
-    const key = todayKey(birthday, bloodType);
+    const key = todayKey(birthDate, bloodType);
     const cached = localStorage.getItem(key);
     if (cached) {
       setFortune(cached);
@@ -28,16 +31,18 @@ export default function FortuneCard() {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/route', {
+      const res = await fetch('/api/fortune', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ birthday, bloodType }),
+        body: JSON.stringify({ birthDate, bloodType }),
       });
       if (!res.ok) throw new Error('サーバーエラー');
       const data = await res.json();
-      if (data?.result) {
-        setFortune(data.result);
-        localStorage.setItem(key, data.result);
+      console.log(data);
+      
+      if (data?.fortune) {
+        setFortune(data.fortune);
+        localStorage.setItem(key, data.fortune);
       } else {
         throw new Error('占いの結果が得られませんでした。');
       }
@@ -57,8 +62,8 @@ export default function FortuneCard() {
           <div className="text-sm">生年月日</div>
           <input
             type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
             className="mt-1 w-full border rounded px-4 py-3"
           />
         </label>
@@ -96,7 +101,7 @@ export default function FortuneCard() {
         <Button
           variant="outline"
           onClick={() => {
-            setBirthday('');
+            setBirthDate('');
             setBloodType('');
             setFortune(null);
             setError(null);
@@ -112,7 +117,6 @@ export default function FortuneCard() {
       {fortune && (
         <div className="mt-4 p-4 bg-gray-50 border rounded shadow-sm">
           <p className="text-lg">{fortune}</p>
-          <p className="text-xs text-gray-500 mt-2">※エンタメ目的です</p>
         </div>
       )}
     </div>

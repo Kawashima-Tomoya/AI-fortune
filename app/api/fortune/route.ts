@@ -18,14 +18,24 @@ export async function POST(req: Request) {
     - 生年月日: ${birthDate}
     - 血液型: ${bloodType}
 
-    占い結果は、100字以内にまとめて。
-    総合運、仕事運、恋愛運、金運、をそれぞれ100点満点で採点して。
-    `;
+    占い結果は簡潔に2-4語で。
+    JSONのみ返して：{"overall":"総合運","love":"恋愛運","work":"仕事運","luckyItem":"アイテム","luckyColor":"色","rating":数値1-100}`;
 
     const result = await model.generateContent(prompt);
     const text = result.response.text();
 
-    return NextResponse.json({ fortune: text, total: Number, work: Number, love: Number, money: Number});
+    // JSONを抽出
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      return NextResponse.json(
+        { error: 'AI応答の解析に失敗しました' },
+        { status: 500 }
+      );
+    }
+
+    const fortune = JSON.parse(jsonMatch[0]);
+    return NextResponse.json(fortune);
+
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "占いの生成に失敗しました。" }, { status: 500 });

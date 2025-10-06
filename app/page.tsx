@@ -1,10 +1,11 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Heart, Sparkles, Star } from 'lucide-react';
+import { Briefcase, Flame, Heart, Sparkles, Star, Zap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useState } from 'react';
+import BackGround from '@/components/layout/back-ground';
 
 interface FortuneResult {
   overall: string;
@@ -69,26 +70,35 @@ export default function FortuneCard() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 space-y-6">
-      <h1 className="text-2xl font-bold">今日のAI占い🔮</h1>
+    <div className="min-h-screen bg-black/90 relative overflow-hidden">
+      <BackGround />
+
+      <div className='max-w-xl mx-auto p-6 space-y-6  '>
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <Zap className="w-10 h-10 text-cyan-400 animate-bounce" />
+        <h1 className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          今日のAI占い
+        </h1>
+        <Flame className="w-10 h-10 text-orange-400 animate-pulse" />
+      </div>
 
       <div>
         <label className="block">
-          <div className="text-sm">生年月日</div>
+          <div className="text-cyan-400">生年月日</div>
           <input
             type="date"
             value={birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
-            className="mt-1 w-full border rounded px-4 py-3"
+            className="mt-2 w-full border rounded px-4 py-3"
           />
         </label>
       </div>
 
       <div>
         <label className="block">
-          <div className="text-sm">血液型</div>
+          <div className="text-cyan-400">血液型</div>
         </label>
-        <div className="grid grid-cols-4 gap-3 mt-1">
+        <div className="mt-2 grid grid-cols-4 gap-3 ">
           {['A', 'B', 'O', 'AB'].map((type) => (
             <Button
               key={type}
@@ -132,7 +142,7 @@ export default function FortuneCard() {
       {fortune && (
           <Card>
             <CardHeader className="text-center border-b">
-              <CardTitle className="text-2xl">占い結果</CardTitle>
+              <CardTitle className="text-2xl text-cyan-400">占い結果</CardTitle>
               <div className="flex items-center justify-center gap-2 mt-2">
                 <Star className="text-yellow-500 fill-yellow-500" />
                 <span className="text-3xl font-bold text-purple-600">{fortune.rating}点</span>
@@ -201,6 +211,7 @@ export default function FortuneCard() {
             </CardContent>
           </Card>
            )}
+    </div>
     </div>
   );
 }

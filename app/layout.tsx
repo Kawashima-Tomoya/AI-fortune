@@ -1,3 +1,4 @@
+import BackGround from '@/components/layout/back-ground';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -26,7 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={Montserrat400.className}>{children}</body>
+      <body className={Montserrat400.className}>
+        <BackGround />
+        {children}
+      </body>
     </html>
   );
 }

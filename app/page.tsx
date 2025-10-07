@@ -72,72 +72,76 @@ export default function FortuneCard() {
   return (
     <div className="min-h-screen bg-black/90 relative overflow-hidden">
       <BackGround />
-
-      <div className='max-w-xl mx-auto p-6 space-y-6  '>
-      <div className="flex items-center justify-center gap-3 mb-4">
-        <Zap className="w-10 h-10 text-cyan-400 animate-bounce" />
-        <h1 className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          今日のAI占い
-        </h1>
-        <Flame className="w-10 h-10 text-orange-400 animate-pulse" />
-      </div>
-
-      <div>
-        <label className="block">
-          <div className="text-cyan-400">生年月日</div>
-          <input
-            type="date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            className="mt-2 w-full border rounded px-4 py-3"
-          />
-        </label>
-      </div>
-
-      <div>
-        <label className="block">
-          <div className="text-cyan-400">血液型</div>
-        </label>
-        <div className="mt-2 grid grid-cols-4 gap-3 ">
-          {['A', 'B', 'O', 'AB'].map((type) => (
-            <Button
-              key={type}
-              onClick={() => setBloodType(type)}
-              className={`py-6 font-semibold transition ${
-                bloodType === type
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {type}型
-            </Button>
-          ))}
+      <div className='max-w-xl mx-auto p-10 '>
+        <div className="flex items-center justify-center gap-3 mb-8">
+          {/* <Zap className="w-10 h-10 text-cyan-400 animate-bounce" /> */}
+          <h1 className="animate-pulse text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            今日のAI占い
+          </h1>
+          {/* <Flame className="w-10 h-10 text-orange-400 animate-pulse" /> */}
         </div>
-      </div>
 
-      <div className="grid grid-cols-3 gap-3">
-        <Button
-          onClick={handleSubmit}
-          disabled={loading}
-          className="bg-purple-600 text-white py-6 rounded disabled:opacity-50 col-span-2 text-lg"
-        >
-          {loading ? '占っています...' : '占う'}
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() => {
-            setBirthDate('');
-            setBloodType('');
-            setFortune(null);
-            setError(null);
-          }}
-          className="px-4 py-6 rounded"
-        >
-          リセット
-        </Button>
-      </div>
+        <div className='p-10 space-y-10 bg-gray-900/90 border-2 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 rounded-lg'>
+          <div>
+            <label className="block">
+              <div className="text-cyan-400 tracking-wide">生年月日</div>
+              <input
+                type="date"
+                value={birthDate}
+                onChange={(e) => setBirthDate(e.target.value)}
+                className="mt-2 w-full border rounded px-4 py-3"
+              />
+            </label>
+          </div>
 
-      {error && <p className="text-red-600 font-semibold">{error}</p>}
+          <div>
+            <label className="block">
+              <div className="text-cyan-400 tracking-wide">血液型</div>
+            </label>
+            <div className="mt-2 grid grid-cols-4 gap-3 ">
+              {['A', 'B', 'O', 'AB'].map((type) => (
+                <Button
+                  key={type}
+                  onClick={() => setBloodType(type)}
+                  className={`h-12 text-gray-200 tracking-wider border-2 transition-all duration-300 ${
+                    bloodType === type
+                      ? 'bg-black/30 border-cyan-400 shadow-lg shadow-cyan-400/50 scale-105'
+                      : 'bg-black/50 border-gray-600  hover:border-cyan-500 hover:text-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30'
+                  }`}
+                >
+                  {type}型
+                </Button>
+              ))}
+            </div>
+          </div>
+      
+          <div className="grid grid-cols-3 gap-3">
+            <Button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg bg-gradient-to-r from-purple-700 to-cyan-700 hover:from-purple-600 hover:to-cyan-600"
+            >
+              {loading ? '占っています...' : '占う'}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setBirthDate('');
+                setBloodType('');
+                setFortune(null);
+                setError(null);
+              }}
+              className="h-12 px-4 rounded text-white hover:text-white bg-gray-800 hover:bg-gray-900 border-2 border-gray-400 hover:border-white transition-all duration-300"
+
+            >
+              リセット
+            </Button>
+          </div>
+        </div>
+        {error && <p className="mt-6 text-red-600 font-semibold">{error}</p>}
+      </div>
+        
+      
 
       {fortune && (
           <Card>
@@ -211,7 +215,6 @@ export default function FortuneCard() {
             </CardContent>
           </Card>
            )}
-    </div>
     </div>
   );
 }

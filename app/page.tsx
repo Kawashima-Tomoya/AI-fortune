@@ -141,64 +141,64 @@ export default function FortuneCard() {
         {error && <p className="mt-6 text-red-600 font-semibold">{error}</p>}
        
         {fortune && (
-          <Card className='mt-6 bg-gradient-to-br from-gray-900/90 to-black/90 border-2 border-orange-500/50 shadow-2xl shadow-orange-500/20 backdrop-blur-sm'>
-            <CardHeader className="text-center border-b">
-              <CardTitle className="text-2xl text-cyan-400">占い結果</CardTitle>
+          <Card className='mt-6 bg-gradient-to-br from-gray-900/80 to-black/80 border-2 border-orange-500/50 shadow-2xl shadow-orange-500/20 backdrop-blur-sm'>
+            <CardHeader className="text-center border-b border-orange-500/50">
+              <CardTitle className="text-2xl text-cyan-400/90">占い結果</CardTitle>
               <div className="flex items-center justify-center gap-2 mt-2">
                 <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
                 <span className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{fortune.rating}点</span>
                 <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
               </div>
             </CardHeader>
-            <CardContent className="space-y-4 pt-6 border-orange-500/50">
-              <Card className="bg-gradient-to-r from-purple-50 to-pink-50">
+            <CardContent className="space-y-4 pt-6">
+              <Card className="text-gray-200 bg-transparent border-orange-600/40">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Sparkles className="text-purple-600" size={18} />
+                    <Sparkles className="animate-pulse text-purple-600" size={18} />
                     総合運
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-700">{fortune.overall}</p>
+                  <p className="text-sm">{fortune.overall}</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-pink-50 to-red-50">
+              <Card className="text-gray-200 bg-transparent border-orange-600/40">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Heart className="text-pink-600" size={18} />
+                    <Heart className="animate-pulse text-pink-600" size={18} />
                     恋愛運
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-700">{fortune.love}</p>
+                  <p className="text-sm">{fortune.love}</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <Card className="text-gray-200 bg-transparent border-orange-600/40">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Briefcase className="text-blue-600" size={18} />
+                    <Briefcase className="animate-pulse text-blue-600" size={18} />
                     仕事運
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-700">{fortune.work}</p>
+                  <p className="text-sm">{fortune.work}</p>
                 </CardContent>
               </Card>
 
               <div className="grid grid-cols-2 gap-4">
-                <Card className="bg-yellow-50">
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-sm">ラッキーアイテム</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Badge variant="secondary" className="font-medium">
+                    <Badge variant="secondary" className="font-medium hover:none">
                       {fortune.luckyItem}
                     </Badge>
                   </CardContent>
                 </Card>
-                <Card className="bg-green-50">
+                <Card className="text-gray-200 text-gray-200 bg-transparent border-orange-600/40">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-sm">ラッキーカラー</CardTitle>
                   </CardHeader>

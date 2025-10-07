@@ -139,21 +139,18 @@ export default function FortuneCard() {
           </div>
         </div>
         {error && <p className="mt-6 text-red-600 font-semibold">{error}</p>}
-      </div>
-        
-      
-
-      {fortune && (
-          <Card>
+       
+        {fortune && (
+          <Card className='mt-6 bg-gradient-to-br from-gray-900/90 to-black/90 border-2 border-orange-500/50 shadow-2xl shadow-orange-500/20 backdrop-blur-sm'>
             <CardHeader className="text-center border-b">
               <CardTitle className="text-2xl text-cyan-400">占い結果</CardTitle>
               <div className="flex items-center justify-center gap-2 mt-2">
-                <Star className="text-yellow-500 fill-yellow-500" />
-                <span className="text-3xl font-bold text-purple-600">{fortune.rating}点</span>
-                <Star className="text-yellow-500 fill-yellow-500" />
+                <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
+                <span className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{fortune.rating}点</span>
+                <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
               </div>
             </CardHeader>
-            <CardContent className="space-y-4 pt-6">
+            <CardContent className="space-y-4 pt-6 border-orange-500/50">
               <Card className="bg-gradient-to-r from-purple-50 to-pink-50">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
@@ -214,7 +211,8 @@ export default function FortuneCard() {
               </div>
             </CardContent>
           </Card>
-           )}
+        )}
+      </div>
     </div>
   );
 }

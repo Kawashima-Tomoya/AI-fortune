@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     - 生年月日: ${birthDate}
     - 血液型: ${bloodType}
 
-    占い結果は簡潔に2-4語で。
+    占い結果は簡潔に40字以内で。
     JSONのみ返して：{"overall":"総合運","love":"恋愛運","work":"仕事運","luckyItem":"アイテム","luckyColor":"色","rating":数値1-100}`;
 
     const result = await model.generateContent(prompt);

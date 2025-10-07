@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Flame, Heart, Sparkles, Star, Zap } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useState } from 'react';
 import BackGround from '@/components/layout/back-ground';
 
@@ -17,7 +16,7 @@ interface FortuneResult {
 }
 
 export default function FortuneCard() {
-  const [birthDate, setBirthDate] = useState('');
+  const [birthDate, setBirthDate] = useState('2000-10-07');
   const [bloodType, setBloodType] = useState('');
   const [fortune, setFortune] = useState<FortuneResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -88,6 +87,7 @@ export default function FortuneCard() {
               <input
                 type="date"
                 value={birthDate}
+                max="9999-12-31"
                 onChange={(e) => setBirthDate(e.target.value)}
                 className="mt-2 w-full border rounded px-4 py-3"
               />

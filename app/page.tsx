@@ -193,9 +193,7 @@ export default function FortuneCard() {
                     <CardTitle className="text-sm">ラッキーアイテム</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Badge variant="secondary" className="font-medium hover:none">
-                      {fortune.luckyItem}
-                    </Badge>
+                    {fortune.luckyItem}
                   </CardContent>
                 </Card>
                 <Card className="text-gray-200 text-gray-200 bg-transparent border-orange-600/40">
@@ -203,9 +201,7 @@ export default function FortuneCard() {
                     <CardTitle className="text-sm">ラッキーカラー</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Badge variant="secondary" className="font-medium">
-                      {fortune.luckyColor}
-                    </Badge>
+                    {fortune.luckyColor}
                   </CardContent>
                 </Card>
               </div>

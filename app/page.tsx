@@ -222,7 +222,7 @@ export default function Page() {
               onClick={() => callApi("yumekawa")}
               disabled={loading}
               className="
-                h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg 
+                h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg mt-6 mx-auto
                 bg-gradient-to-r from-fuchsia-300 to-violet-400 hover:from-fuchsia-200 hover:to-violet-300"
               >
               {loading ? 'めっちゃ占い中...' : '夢かわモードで再度占う'}

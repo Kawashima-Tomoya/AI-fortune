@@ -2,7 +2,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Flame, Heart, Sparkles, Star, Zap } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 import BackGround from '@/components/layout/back-ground';
 

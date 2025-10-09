@@ -19,6 +19,7 @@ export async function POST(req: Request) {
     - 血液型: ${bloodType}
 
     占い結果は簡潔に50字以内で。
+    luckyItemとluckyColorは奇をてらって提案して。
     JSONのみ返して：{"overall":"総合運","love":"恋愛運","work":"仕事運","luckyItem":"アイテム","luckyColor":"色","rating":数値1-100}`;
 
     const result = await model.generateContent(prompt);

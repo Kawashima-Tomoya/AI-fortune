@@ -189,7 +189,7 @@ export default function FortuneCard() {
               <Card className="text-gray-200 bg-transparent border-orange-600/40">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Apple className="animate-pulse text-red-500" size={18} />
+                    <Apple className="animate-pulse text-red-600" size={18} />
                     ラッキーアイテム
                   </CardTitle>
                 </CardHeader>
@@ -201,7 +201,7 @@ export default function FortuneCard() {
               <Card className="text-gray-200 bg-transparent border-orange-600/40">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Palette className="animate-pulse text-orange-600" size={18} />
+                    <Palette className="animate-pulse text-teal-600" size={18} />
                     ラッキーカラー
                   </CardTitle>
                 </CardHeader>

@@ -142,89 +142,95 @@ export default function Page() {
         </div>
         {error && <p className="mt-6 text-red-600 font-semibold">{error}</p>}
        
+      
         {fortune && (
-          <Card className='mt-6 bg-gradient-to-br from-gray-900/80 to-black/80 border-2 border-orange-500/50 shadow-2xl shadow-orange-500/20 backdrop-blur-sm'>
-            <CardHeader className="text-center border-b border-orange-500/50">
-              <CardTitle className="text-2xl text-cyan-400/90">占い結果</CardTitle>
-              <div className="flex items-center justify-center gap-2 mt-2">
-                <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
-                <span className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{fortune.rating}点</span>
-                <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4 pt-6">
-              <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Sparkles className="animate-pulse text-purple-600" size={18} />
-                    総合運
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{fortune.overall}</p>
-                </CardContent>
-              </Card>
+          <div>
+            <Card className='mt-6 bg-gradient-to-br from-gray-900/80 to-black/80 border-2 border-orange-500/50 shadow-2xl shadow-orange-500/20 backdrop-blur-sm'>
+              <CardHeader className="text-center border-b border-orange-500/50">
+                <CardTitle className="text-2xl text-cyan-400/90">占い結果</CardTitle>
+                <div className="flex items-center justify-center gap-2 mt-2">
+                  <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
+                  <span className="text-4xl text-center tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">{fortune.rating}点</span>
+                  <Star className="animate-pulse text-yellow-500 fill-yellow-500/70" />
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4 pt-6">
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Sparkles className="animate-pulse text-purple-600" size={18} />
+                      総合運
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">{fortune.overall}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Heart className="animate-pulse text-pink-600" size={18} />
-                    恋愛運
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{fortune.love}</p>
-                </CardContent>
-              </Card>
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Heart className="animate-pulse text-pink-600" size={18} />
+                      恋愛運
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">{fortune.love}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Briefcase className="animate-pulse text-blue-600" size={18} />
-                    仕事運
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{fortune.work}</p>
-                </CardContent>
-              </Card>
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Briefcase className="animate-pulse text-blue-600" size={18} />
+                      仕事運
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">{fortune.work}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Apple className="animate-pulse text-red-600" size={18} />
-                    ラッキーアイテム
-                  </CardTitle>
-                </CardHeader>
-                <CardContent >
-                  <p className="text-sm">{fortune.luckyItem}</p>
-                </CardContent>
-              </Card>
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Apple className="animate-pulse text-red-600" size={18} />
+                      ラッキーアイテム
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent >
+                    <p className="text-sm">{fortune.luckyItem}</p>
+                  </CardContent>
+                </Card>
 
-              <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Palette className="animate-pulse text-teal-600" size={18} />
-                    ラッキーカラー
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{fortune.luckyColor}</p>
-                </CardContent>
-              </Card>
-            </CardContent>
-          </Card>
+                <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base flex items-center gap-2">
+                      <Palette className="animate-pulse text-teal-600" size={18} />
+                      ラッキーカラー
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm">{fortune.luckyColor}</p>
+                  </CardContent>
+                </Card>
+              </CardContent>
+              
+            </Card>
+
+            <Button
+              onClick={() => callApi("yumekawa")}
+              disabled={loading}
+              className="
+                h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg 
+                bg-gradient-to-r from-fuchsia-300 to-violet-400 hover:from-fuchsia-200 hover:to-violet-300"
+              >
+              {loading ? 'めっちゃ占い中...' : '夢かわモードで再度占う'}
+            </Button>
+          </div>
         )}
       </div>
-      <Button
-        onClick={() => callApi("yumekawa")}
-        disabled={loading}
-        className="
-          h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg 
-          bg-gradient-to-r from-fuchsia-300 to-violet-400 hover:from-fuchsia-200 hover:to-violet-300"
-      >
-        {loading ? 'めっちゃ占い中...' : '夢かわモードで再度占う'}
-      </Button>
     </div>
   );
 }
+

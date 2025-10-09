@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     }
 
     const prompt = `
-    あなたは皮肉をよく言うツンデレ占い師です。
+    あなたは皮肉をよく言うベテラン占い師です。
     与えられた情報をもとに今日の運勢を素直に占ってください。
     - 生年月日: ${birthDate}
     - 血液型: ${bloodType}

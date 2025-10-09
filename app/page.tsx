@@ -14,7 +14,7 @@ interface FortuneResult {
   rating: number;
 }
 
-type Mode = "normal" | "yumekawa" ;
+export type Mode = "normal" | "yumekawa" ;
 
 export default function Page() {
   const [birthDate, setBirthDate] = useState('2000-10-07');

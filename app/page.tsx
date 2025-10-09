@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Flame, Heart, Sparkles, Star, Zap } from 'lucide-react';
+import { Apple, Briefcase, Flame, Heart, Palette, Sparkles, Star, Zap } from 'lucide-react';
 import { useState } from 'react';
 import BackGround from '@/components/layout/back-ground';
 
@@ -186,24 +186,29 @@ export default function FortuneCard() {
                 </CardContent>
               </Card>
 
-              <div className="grid grid-cols-2 gap-4">
-                <Card className="text-gray-200 bg-transparent border-orange-600/40">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm">ラッキーアイテム</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {fortune.luckyItem}
-                  </CardContent>
-                </Card>
-                <Card className="text-gray-200 text-gray-200 bg-transparent border-orange-600/40">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm">ラッキーカラー</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {fortune.luckyColor}
-                  </CardContent>
-                </Card>
-              </div>
+              <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Apple className="animate-pulse text-red-500" size={18} />
+                    ラッキーアイテム
+                  </CardTitle>
+                </CardHeader>
+                <CardContent >
+                  <p className="text-sm">{fortune.luckyItem}</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-gray-200 bg-transparent border-orange-600/40">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Palette className="animate-pulse text-orange-600" size={18} />
+                    ラッキーカラー
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm">{fortune.luckyColor}</p>
+                </CardContent>
+              </Card>
             </CardContent>
           </Card>
         )}

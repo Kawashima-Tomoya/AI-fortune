@@ -14,27 +14,27 @@ interface FortuneResult {
   rating: number;
 }
 
-export default function FortuneCard() {
+type Mode = "normal" | "yumekawa" ;
+
+export default function Page() {
   const [birthDate, setBirthDate] = useState('2000-10-07');
   const [bloodType, setBloodType] = useState('');
   const [fortune, setFortune] = useState<FortuneResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const todayKey = (birthDate: string, bloodType: string) => {
+  const todayKey = (birthDate: string, bloodType: string, mode: Mode) => {
     const t = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-    return `fortune:${birthDate}:${bloodType}:${t}`;
+    return `fortune:${birthDate}:${bloodType}:${t}:${mode}`;
   };
 
-  const handleSubmit = async () => {
+  const callApi = async (mode: Mode) => {
     setError(null);
-
-    console.log("Sending:", { birthDate, bloodType }); // 確認
     
     if (!birthDate) return setError('生年月日を選んでください。');
     if (!bloodType) return setError('血液型を選んでください。');
 
-    const key = todayKey(birthDate, bloodType);
+    const key = todayKey(birthDate, bloodType, mode);
     const cached = localStorage.getItem(key);
     if (cached) {
       setFortune(JSON.parse(cached));
@@ -48,11 +48,10 @@ export default function FortuneCard() {
       const res = await fetch('/api/fortune', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ birthDate, bloodType }),
+        body: JSON.stringify({ birthDate, bloodType, mode }),
       });
-      if (!res.ok) throw new Error('サーバーエラー');
       const data = await res.json();
-      console.log(data);
+      if (!res.ok) throw new Error('サーバーエラー');
       
       if (data) {
         setFortune(data);
@@ -65,6 +64,10 @@ export default function FortuneCard() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = async () => {
+    await callApi("normal");
   };
 
   return (
@@ -213,6 +216,15 @@ export default function FortuneCard() {
           </Card>
         )}
       </div>
+      <Button
+        onClick={() => callApi("yumekawa")}
+        disabled={loading}
+        className="
+          h-12 text-white rounded disabled:opacity-50 col-span-2 text-lg 
+          bg-gradient-to-r from-fuchsia-300 to-violet-400 hover:from-fuchsia-200 hover:to-violet-300"
+      >
+        {loading ? 'めっちゃ占い中...' : '夢かわモードで再度占う'}
+      </Button>
     </div>
   );
 }

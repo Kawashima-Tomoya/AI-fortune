@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Apple, Briefcase, Flame, Heart, Palette, Sparkles, Star, Zap } from 'lucide-react';
+import { Apple, Briefcase, Heart, Palette, Sparkles, Star } from 'lucide-react';
 import { useState } from 'react';
 import BackGround from '@/components/layout/back-ground';
 
@@ -55,7 +55,7 @@ export default function Page() {
       
       if (data) {
         setFortune(data);
-        localStorage.setItem(key, data);
+        localStorage.setItem(key, JSON.stringify(data));
       } else {
         throw new Error('占いの結果が得られませんでした。');
       }
